@@ -95,6 +95,7 @@ GEM
     irb (1.4.1)
       reline (>= 0.3.0)
     json (2.6.2)
+    jwt (2.4.1)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -120,6 +121,8 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
+    nokogiri (1.13.7-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -212,14 +215,17 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   cancancan
   debug
   devise
   ffi (~> 1.9, >= 1.9.10)
+  jwt
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
