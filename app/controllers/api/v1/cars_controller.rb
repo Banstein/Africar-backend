@@ -7,8 +7,7 @@ class Api::V1::CarsController < ApplicationController
     render json: @cars
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @car = Car.create(car_params)
