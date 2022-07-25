@@ -7,19 +7,15 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-        origin "http://localhost:3000"
-        resource "*",
-        headers: :any,  
-        methods: [:get, :post, :put, :patch, :delete, :options, :head]
+        origins "http://localhost:3000"
+        resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head],
 credentials: true
     end
 
     # Here goes production link of the deployed frontend application
     allow do
-        origin "https://africar-microverse-app-react.netlify.com"
-        resource "*",
-        headers: :any,  
-        methods: [:get, :post, :put, :patch, :delete, :options, :head]
+        origins "https://africar-microverse-app-react.netlify.com"
+        resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head],
 credentials: true
     end
 end
