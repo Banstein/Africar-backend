@@ -1,0 +1,1 @@
+Rails.application.config.session_store :cookie_store, key: "_africar_app", domain: "africar-microverse-app-react.herokuapp.com"
