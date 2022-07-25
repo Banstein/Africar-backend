@@ -1,4 +1,7 @@
 class Api::V1::CarsController < ApplicationController
+  before_action :authorized, only: %i[create update destroy]
+  before_action :set_car, only: %i[update]
+
   def index
     @cars = Car.all
     render json: @cars
@@ -31,6 +34,6 @@ class Api::V1::CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:car_id, :user_id, :name, :description, :picture, :price, :date)
+    params.require(:car).permit(:car_id, :user_id, :name, :description, :picture, :price)
   end
 end
