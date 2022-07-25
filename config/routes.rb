@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
   
   resources :cars, only: %i[index show new create destroy update]
-  resources :Reservations, only: %i[index new create destroy update]
+  resources :reservations, only: %i[index show new create destroy update]
   root "cars#index"
 end
