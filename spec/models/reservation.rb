@@ -13,7 +13,7 @@ RSpec.describe Reservation, type: :model do
     end
   end
 
-    describe '#update' do
+  describe '#update' do
     it 'should update a reservation' do
       reservation = Reservation.create(
         user_id: 1,
