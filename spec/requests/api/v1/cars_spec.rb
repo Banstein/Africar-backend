@@ -1,34 +1,72 @@
-require 'rails_helper'
-RSpec.describe Car, type: :model do
-  subject do
-    @user = User.create(username: 'test', password_digest: 'test', created_at: Time.now, updated_at: Time.now)
-    @car = Car.create(name: 'test', description: 'test', picture: 'car', price: 200, created_at: Time.now,
-                      updated_at: Time.now)
-  end
-  before { subject.save }
+require 'swagger_helper'
 
-  it 'is not valid without a name' do
-    subject.name = nil
-    expect(subject).to_not be_valid
-  end
+describe 'Api::V1::Cars' do
+  let(:user) { create(:user) }
+  let(:car) { create(:car, user: user) }
+  let(:token) { JWT.encode({ user_id: user.id }, ENV['JWT_SECRET']) }
+  let(:headers) { { 'Authorization' => token } }
+  let(:car_params) { { name: 'test', description: 'test', picture: 'car', price: 200 } }
 
-  it 'is not valid without a description' do
-    subject.description = nil
-    expect(subject).to_not be_valid
+  path '/api/v1/cars' do
+    get 'Returns all cars' do
+      tags 'Cars'
+      produces 'application/json'
+      response '200', 'Returns all cars' do
+        run_test!
+      end
+    end
   end
-
-  it 'is not valid without a picture' do
-    subject.picture = nil
-    expect(subject).to_not be_valid
+  path '/api/v1/cars' do
+    post 'Creates a car' do
+      tags 'Cars'
+      consumes 'application/json'
+      parameter name: :car, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          description: { type: :string },
+          picture: { type: :string },
+          price: { type: :number }
+        },
+        required: ['name', 'description', 'picture', 'price']
+      }
+      response '201', 'Car created' do
+        run_test!
+      end
+      response '422', 'Car creation failed' do
+        run_test!
+      end
+    end
   end
-
-  it 'is not valid without a price' do
-    subject.price = nil
-    expect(subject).to_not be_valid
+  path '/api/v1/cars/{id}' do
+    put 'Updates a car' do
+      tags 'Cars'
+      consumes 'application/json'
+      parameter name: :car, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          description: { type: :string },
+          picture: { type: :string },
+          price: { type: :number }
+        },
+        required: ['name', 'description', 'picture', 'price']
+      }
+      response '200', 'Car updated' do
+        run_test!
+      end
+      response '422', 'Car update failed' do
+        run_test!
+      end
+    end
   end
-
-  it 'is not valid without a user_id' do
-    subject.user_id = nil
-    expect(subject).to_not be_valid
+  path '/api/v1/cars/{id}' do
+    delete 'Deletes a car' do
+      tags 'Cars'
+      produces 'application/json'
+      response '200', 'Car deleted' do
+        run_test!
+      end
+    end
   end
 end
