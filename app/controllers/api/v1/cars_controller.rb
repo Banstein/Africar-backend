@@ -7,7 +7,10 @@ class Api::V1::CarsController < ApplicationController
     render json: @cars
   end
 
-  def show; end
+  def show
+    @car = Car.find(params[:id])
+    render json: @car
+  end
 
   def create
     @car = Car.create(car_params)

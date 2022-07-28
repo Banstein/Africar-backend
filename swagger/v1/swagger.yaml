@@ -1,0 +1,87 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/cars":
+    get:
+      summary: Returns all cars
+      tags:
+      - Cars
+      responses:
+        '200':
+          description: Returns all cars
+    post:
+      summary: Creates a car
+      tags:
+      - Cars
+      parameters: []
+      responses:
+        '201':
+          description: Car created
+        '422':
+          description: Car creation failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                picture:
+                  type: string
+                price:
+                  type: number
+              required:
+              - name
+              - description
+              - picture
+              - price
+  "/api/v1/cars/{id}":
+    put:
+      summary: Updates a car
+      tags:
+      - Cars
+      parameters: []
+      responses:
+        '200':
+          description: Car updated
+        '422':
+          description: Car update failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                picture:
+                  type: string
+                price:
+                  type: number
+              required:
+              - name
+              - description
+              - picture
+              - price
+    delete:
+      summary: Deletes a car
+      tags:
+      - Cars
+      responses:
+        '200':
+          description: Car deleted
+        '422':
+          description: Car deletion failed
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
