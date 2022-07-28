@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
   subject do
-    @user = User.create(username: 'Tobin',password: 'password')
+    @user = User.create(username: 'Tobin', password: 'password')
     @car = Car.new(name: 'Honda', description: 'Honda fit', price: 2000, picture: 'url')
     @reservation = Reservation.create(date: 'Sun, 02 Feb 2020', city: 'DR Congo', car_id: 1, user_id: 1)
   end
