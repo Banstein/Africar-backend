@@ -78,6 +78,8 @@ paths:
       responses:
         '200':
           description: Car deleted
+        '422':
+          description: Car deletion failed
 servers:
 - url: https://{defaultHost}
   variables:
