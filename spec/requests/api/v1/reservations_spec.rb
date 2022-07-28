@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'Api::V1::Cars', type: :request do
   let(:user) { create(:user) }
-  let(:car) { create(:car, user: user) }
-  let(:token) { JWT.encode({ user_id: user.id }, ENV['JWT_SECRET']) }
+  let(:car) { create(:car, user:) }
+  let(:token) { JWT.encode({ user_id: user.id }, ENV.fetch('JWT_SECRET', nil)) }
   let(:headers) { { 'Authorization' => token } }
   let(:car_params) { { name: 'test', description: 'test', picture: 'car', price: 200 } }
 
@@ -28,7 +28,7 @@ RSpec.describe 'Api::V1::Cars', type: :request do
           picture: { type: :string },
           price: { type: :number }
         },
-        required: ['name', 'description', 'picture', 'price']
+        required: %w[name description picture price]
       }
       response '201', 'Car created' do
         run_test!
@@ -50,7 +50,7 @@ RSpec.describe 'Api::V1::Cars', type: :request do
           picture: { type: :string },
           price: { type: :number }
         },
-        required: ['name', 'description', 'picture', 'price']
+        required: %w[name description picture price]
       }
       response '200', 'Car updated' do
         run_test!
