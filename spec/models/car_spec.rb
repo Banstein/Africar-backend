@@ -3,7 +3,7 @@ RSpec.describe Car, type: :model do
   subject do
     @user = User.create(username: 'test', password_digest: 'test', created_at: Time.now, updated_at: Time.now)
     @car = Car.create(name: 'test', description: 'test', picture: 'car', price: 200, created_at: Time.now,
-                      updated_at: Time.now)
+                      updated_at: Time.now, user_id: @user.id)
   end
   before { subject.save }
 
