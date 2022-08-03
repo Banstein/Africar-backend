@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'Api::V1::Reservations', type: :request do
   let(:user) { create(:user) }
-  let(:car) { create(:car, user: user) }
+  let(:car) { create(:car, user:) }
   let(:token) { JWT.encode({ user_id: user.id }, ENV.fetch('JWT_SECRET', nil)) }
   let(:headers) { { 'Authorization' => token } }
   let(:reservation_params) { { start_date: '2020-01-01', end_date: '2020-01-02' } }
@@ -36,7 +36,7 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
       end
     end
   end
-  
+
   path '/api/v1/reservations/{id}' do
     put 'Updates a reservation' do
       tags 'Reservations'
