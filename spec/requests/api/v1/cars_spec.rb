@@ -16,6 +16,15 @@ describe 'Api::V1::Cars' do
       end
     end
   end
+  path '/api/v1/cars/{id}' do
+    get 'show car' do
+      tags 'Cars'
+      produces 'application/json'
+      response '200', 'show car' do
+        run_test!
+      end
+    end
+  end
   path '/api/v1/cars' do
     post 'Creates a car' do
       tags 'Cars'

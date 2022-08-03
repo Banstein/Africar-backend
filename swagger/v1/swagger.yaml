@@ -42,6 +42,13 @@ paths:
               - picture
               - price
   "/api/v1/cars/{id}":
+    get:
+      summary: show car
+      tags:
+      - Cars
+      responses:
+        '200':
+          description: show car
     put:
       summary: Updates a car
       tags:
