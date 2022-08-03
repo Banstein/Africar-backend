@@ -36,6 +36,7 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
       end
     end
   end
+  
   path '/api/v1/reservations/{id}' do
     put 'Updates a reservation' do
       tags 'Reservations'
