@@ -136,20 +136,13 @@ paths:
               - start_date
               - end_date
   "/api/v1/sessions":
-    get:
-      summary: Returns all sessions
-      tags:
-      - Sessions
-      responses:
-        '200':
-          description: Returns all sessions
     post:
       summary: Creates a session
       tags:
       - Sessions
       parameters: []
       responses:
-        '201':
+        '200':
           description: Session created
         '422':
           description: Session creation failed
@@ -159,33 +152,37 @@ paths:
             schema:
               type: object
               properties:
-                date:
+                email:
+                  type: string
+                password:
                   type: string
               required:
-              - date
-  "/api/v1/sessions/{id}":
-    put:
-      summary: Updates a session
+              - email
+              - password
+  "/users":
+    post:
+      summary: Creates a user
       tags:
-      - Sessions
+      - Users
       parameters: []
       responses:
         '200':
-          description: Session updated
+          description: User created
         '422':
-          description: Session update failed
-        '404':
-          description: Session not found
+          description: User creation failed
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                date:
+                email:
+                  type: string
+                password:
                   type: string
               required:
-              - date
+              - email
+              - password
 servers:
 - url: https://{defaultHost}
   variables:
