@@ -78,8 +78,114 @@ paths:
       responses:
         '200':
           description: Car deleted
+  "/api/v1/reservations":
+    get:
+      summary: Returns all reservations
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: Returns all reservations
+    post:
+      summary: Creates a reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: Reservation created
         '422':
-          description: Car deletion failed
+          description: Reservation creation failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+              required:
+              - start_date
+              - end_date
+  "/api/v1/reservations/{id}":
+    put:
+      summary: Updates a reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '200':
+          description: Reservation updated
+        '422':
+          description: Reservation update failed
+        '404':
+          description: Reservation not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+              required:
+              - start_date
+              - end_date
+  "/api/v1/sessions":
+    get:
+      summary: Returns all sessions
+      tags:
+      - Sessions
+      responses:
+        '200':
+          description: Returns all sessions
+    post:
+      summary: Creates a session
+      tags:
+      - Sessions
+      parameters: []
+      responses:
+        '201':
+          description: Session created
+        '422':
+          description: Session creation failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+              required:
+              - date
+  "/api/v1/sessions/{id}":
+    put:
+      summary: Updates a session
+      tags:
+      - Sessions
+      parameters: []
+      responses:
+        '200':
+          description: Session updated
+        '422':
+          description: Session update failed
+        '404':
+          description: Session not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+              required:
+              - date
 servers:
 - url: https://{defaultHost}
   variables:
