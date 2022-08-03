@@ -4,10 +4,11 @@
   </a>
   <p align="center">
     <br />
-    <a href=""><strong>Explore the API docs »</strong></a>
+    <a href="https://africar-premium.herokuapp.com/api-docs/index.html"><strong>Explore the API docs</strong></a> .
+    <a href="https://github.com/Banstein/africar-frontend"><strong>Front End Link</strong></a>
     <br />
     <br />
-    <a href="https://africar-premium.herokuapp.com/api-docs/index.html">View Demo</a>
+    <a href="https://github.com/Banstein/africar-backend">View Demo</a>
     ·
     <a href="https://github.com/Banstein/africar-backend/issues">Report Bug</a>
   </p>
