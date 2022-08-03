@@ -85,8 +85,111 @@ paths:
       responses:
         '200':
           description: Car deleted
+  "/api/v1/reservations":
+    get:
+      summary: Returns all reservations
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: Returns all reservations
+    post:
+      summary: Creates a reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: Reservation created
         '422':
-          description: Car deletion failed
+          description: Reservation creation failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+              required:
+              - start_date
+              - end_date
+  "/api/v1/reservations/{id}":
+    put:
+      summary: Updates a reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '200':
+          description: Reservation updated
+        '422':
+          description: Reservation update failed
+        '404':
+          description: Reservation not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+              required:
+              - start_date
+              - end_date
+  "/api/v1/sessions":
+    post:
+      summary: Creates a session
+      tags:
+      - Sessions
+      parameters: []
+      responses:
+        '200':
+          description: Session created
+        '422':
+          description: Session creation failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/users":
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: User created
+        '422':
+          description: User creation failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
 servers:
 - url: https://{defaultHost}
   variables:
