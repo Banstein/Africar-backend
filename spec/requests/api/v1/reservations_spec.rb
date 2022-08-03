@@ -1,73 +1,62 @@
 require 'swagger_helper'
 
-RSpec.describe 'Api::V1::Cars', type: :request do
+RSpec.describe 'Api::V1::Reservations', type: :request do
   let(:user) { create(:user) }
   let(:car) { create(:car, user:) }
   let(:token) { JWT.encode({ user_id: user.id }, ENV.fetch('JWT_SECRET', nil)) }
   let(:headers) { { 'Authorization' => token } }
-  let(:car_params) { { name: 'test', description: 'test', picture: 'car', price: 200 } }
+  let(:reservation_params) { { start_date: '2020-01-01', end_date: '2020-01-02' } }
 
-  path '/api/v1/cars' do
-    get 'Returns all cars' do
-      tags 'Cars'
+  path '/api/v1/reservations' do
+    get 'Returns all reservations' do
+      tags 'Reservations'
       produces 'application/json'
-      response '200', 'Returns all cars' do
+      response '200', 'Returns all reservations' do
         run_test!
       end
     end
   end
-  path '/api/v1/cars' do
-    post 'Creates a car' do
-      tags 'Cars'
+  path '/api/v1/reservations' do
+    post 'Creates a reservation' do
+      tags 'Reservations'
       consumes 'application/json'
-      parameter name: :car, in: :body, schema: {
+      parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string },
-          description: { type: :string },
-          picture: { type: :string },
-          price: { type: :number }
+          start_date: { type: :string },
+          end_date: { type: :string }
         },
-        required: %w[name description picture price]
+        required: %w[start_date end_date]
       }
-      response '201', 'Car created' do
+      response '201', 'Reservation created' do
         run_test!
       end
-      response '422', 'Car creation failed' do
+      response '422', 'Reservation creation failed' do
         run_test!
       end
     end
   end
-  path '/api/v1/cars/{id}' do
-    put 'Updates a car' do
-      tags 'Cars'
+
+  path '/api/v1/reservations/{id}' do
+    put 'Updates a reservation' do
+      tags 'Reservations'
       consumes 'application/json'
-      parameter name: :car, in: :body, schema: {
+      parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string },
-          description: { type: :string },
-          picture: { type: :string },
-          price: { type: :number }
+          start_date: { type: :string },
+          end_date: { type: :string }
         },
-        required: %w[name description picture price]
+        required: %w[start_date end_date]
       }
-      response '200', 'Car updated' do
+      response '200', 'Reservation updated' do
         run_test!
       end
-      response '422', 'Car update failed' do
+      response '422', 'Reservation update failed' do
         run_test!
       end
-    end
-  end
-  path '/api/v1/cars/{id}' do
-    delete 'Deletes a car' do
-      tags 'Cars'
-      consumes 'application/json'
-      response '200', 'Car deleted' do
-        run_test!
-      end
-      response '422', 'Car deletion failed' do
+
+      response '404', 'Reservation not found' do
         run_test!
       end
     end

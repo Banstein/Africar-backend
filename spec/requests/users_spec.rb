@@ -1,14 +1,14 @@
 require 'swagger_helper'
 
-RSpec.describe 'Sessions', type: :request do
+RSpec.describe 'Users', type: :request do
   let(:user) { create(:user) }
   let(:token) { JWT.encode({ user_id: user.id }, ENV.fetch('JWT_SECRET', nil)) }
   let(:headers) { { 'Authorization' => token } }
   let(:user_params) { { email: user.email, password: user.password } }
 
-  path '/api/v1/sessions' do
-    post 'Creates a session' do
-      tags 'Sessions'
+  path '/users' do
+    post 'Creates a user' do
+      tags 'Users'
       consumes 'application/json'
       parameter name: :user, in: :body, schema: {
         type: :object,
@@ -18,10 +18,10 @@ RSpec.describe 'Sessions', type: :request do
         },
         required: %w[email password]
       }
-      response '200', 'Session created' do
+      response '200', 'User created' do
         run_test!
       end
-      response '422', 'Session creation failed' do
+      response '422', 'User creation failed' do
         run_test!
       end
     end
