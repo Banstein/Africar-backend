@@ -1,15 +1,18 @@
-# User(id: integer, username: string, password_digest: string, created_at: datetime, updated_at: datetime)
+# User(id: integer, name: string, password: string, email: string, created_at: datetime, updated_at: datetime)
 users = User.create!([
   {
     username: "bahnas",
+    email: "bahnas@example.com",
     password: "11111111",
   },
   {
     username: "pascal",
+    email: "pascal@example.com",
     password: "22222222",
   },
   {
     username: "nicholas",
+    email: "nicholas@example.com",
     password: "33333333",
   },
 ])
