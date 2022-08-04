@@ -43,7 +43,7 @@ paths:
               - price
   "/api/v1/cars/{id}":
     get:
-      summary: show car
+      summary: Shows a car
       tags:
       - Cars
       responses:
@@ -142,30 +142,6 @@ paths:
               required:
               - start_date
               - end_date
-  "/api/v1/sessions":
-    post:
-      summary: Creates a session
-      tags:
-      - Sessions
-      parameters: []
-      responses:
-        '200':
-          description: Session created
-        '422':
-          description: Session creation failed
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                password:
-                  type: string
-              required:
-              - email
-              - password
   "/users":
     post:
       summary: Creates a user
