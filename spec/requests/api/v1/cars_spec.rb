@@ -17,7 +17,7 @@ describe 'Api::V1::Cars' do
     end
   end
   path '/api/v1/cars/{id}' do
-    get 'show car' do
+    get 'Shows a car' do
       tags 'Cars'
       produces 'application/json'
       response '200', 'show car' do

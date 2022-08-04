@@ -4,12 +4,8 @@
   </a>
   <p align="center">
     <br />
-    <a href="https://africar-premium.herokuapp.com/api-docs/index.html"><strong>Explore the API docs</strong></a> .
-    <a href="https://github.com/Banstein/africar-frontend"><strong>Front End Link</strong></a>
+    <a href="https://africar-premium.herokuapp.com/api-docs/index.html"><strong>Explore the API docs</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/Banstein/africar-backend">View Demo</a>
-    ·
     <a href="https://github.com/Banstein/africar-backend/issues">Report Bug</a>
   </p>
 </div>
@@ -21,6 +17,8 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#frontend-live-version">Frontend Live version</a></li>
+        <li><a href="#frontend-source-code">Frontend Source Code</a></li>
         <li><a href="#erd-diagram">ERD diagram</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -43,15 +41,28 @@
 ## About The Project
 
 > **Africar App** is a Car reservation platform that allows customers to book their car remotely within a defined time frame.
+
+<br />
+
 ### ERD diagram
 
 <img alt="ERD diagram" src="./img/ERD diagram.png ">
 
-### Built With
+<br />
 
-- ruby
-- ruby on rails
-- psql
+## Frontend Live version
+
+[Live Version]()
+
+## Frontend Source Code
+
+[Source Code](https://africar-premium.herokuapp.com/api-docs/index.html)
+
+## Built With
+
+- Ruby
+- Rails
+- Postgresql
 
 
 ## Getting Started
