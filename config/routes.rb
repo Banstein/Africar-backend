@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
-  resources :users, only: [:create]
-  namespace :api, defaults: { format: :json } do
+
+  namespace :api do
     namespace :v1 do
+      resources :cars
+      resources :users do
+        resources :reservations
+      end
+      
       post "/login", to: "users#login"
-      resources :cars, only: %i[index show new create destroy update]
-      resources :reservations, only: %i[index show new create destroy update]
-      root "cars#index"
+      get "/login", to: "users#token_authenticate"
     end
   end
 end
