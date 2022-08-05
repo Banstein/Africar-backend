@@ -52,11 +52,16 @@
 
 ## Frontend Live version
 
-[Live Version]()
+[Live Version](https://relaxed-boba-84ada7.netlify.app/)
 
 ## Frontend Source Code
 
 [Source Code](https://github.com/Banstein/africar-frontend)
+
+
+## Kanban Board 
+
+- Here is a link of [Kanban Board](https://github.com/Banstein/africar-backend/projects/1)## Built With
 
 ## Built With
 
@@ -120,6 +125,7 @@ To get a local copy up and running follow these simple example steps.
     ```sh
     rails rswag 
     ```
+    
     ```sh
     rspec spec/requests
     ```
