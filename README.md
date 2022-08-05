@@ -61,7 +61,7 @@
 
 ## Kanban Board 
 
-- Here is a link of [Kanban Board](https://github.com/Banstein/africar-backend/projects/1)## Built With
+Here is a link of [Kanban Board](https://github.com/Banstein/africar-backend/projects/1)## Built With
 
 ## Built With
 
