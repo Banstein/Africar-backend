@@ -5,9 +5,9 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
   let(:car) { create(:car, user:) }
   let(:token) { JWT.encode({ user_id: user.id }, ENV.fetch('JWT_SECRET', nil)) }
   let(:headers) { { 'Authorization' => token } }
-  let(:reservation_params) { { start_date: '2020-01-01', end_date: '2020-01-02' } }
+  let(:reservation_params) { { date: '2020-01-01', city: 'Alexandria' } }
 
-  path '/api/v1/reservations' do
+  path '/api/v1/users/:user_id/reservations' do
     get 'Returns all reservations' do
       tags 'Reservations'
       produces 'application/json'
@@ -16,17 +16,17 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
       end
     end
   end
-  path '/api/v1/reservations' do
+  path '/api/v1/users/:user_id/reservations' do
     post 'Creates a reservation' do
       tags 'Reservations'
       consumes 'application/json'
       parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
-          start_date: { type: :string },
-          end_date: { type: :string }
+          date: { type: :string },
+          city: { type: :string }
         },
-        required: %w[start_date end_date]
+        required: %w[date city]
       }
       response '201', 'Reservation created' do
         run_test!
@@ -37,17 +37,17 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
     end
   end
 
-  path '/api/v1/reservations/{id}' do
+  path '/api/v1/users/:user_id/reservations/{id}' do
     put 'Updates a reservation' do
       tags 'Reservations'
       consumes 'application/json'
       parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
-          start_date: { type: :string },
-          end_date: { type: :string }
+          date: { type: :string },
+          city: { type: :string }
         },
-        required: %w[start_date end_date]
+        required: %w[date city]
       }
       response '200', 'Reservation updated' do
         run_test!

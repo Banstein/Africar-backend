@@ -6,7 +6,7 @@ describe 'Api::V1::Users' do
   let(:headers) { { 'Authorization' => token } }
   let(:user_params) { { email: user.email, password: user.password } }
 
-  path '/users' do
+  path '/api/v1/users' do
     post 'Creates a user' do
       tags 'Users'
       consumes 'application/json'

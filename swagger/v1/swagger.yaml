@@ -85,7 +85,7 @@ paths:
       responses:
         '200':
           description: Car deleted
-  "/api/v1/reservations":
+  "/api/v1/users/:user_id/reservations":
     get:
       summary: Returns all reservations
       tags:
@@ -109,14 +109,14 @@ paths:
             schema:
               type: object
               properties:
-                start_date:
+                date:
                   type: string
-                end_date:
+                city:
                   type: string
               required:
-              - start_date
-              - end_date
-  "/api/v1/reservations/{id}":
+              - date
+              - city
+  "/api/v1/users/:user_id/reservations/{id}":
     put:
       summary: Updates a reservation
       tags:
@@ -135,14 +135,14 @@ paths:
             schema:
               type: object
               properties:
-                start_date:
+                date:
                   type: string
-                end_date:
+                city:
                   type: string
               required:
-              - start_date
-              - end_date
-  "/users":
+              - date
+              - city
+  "/api/v1/users":
     post:
       summary: Creates a user
       tags:
