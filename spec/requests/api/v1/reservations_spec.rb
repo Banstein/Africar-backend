@@ -24,7 +24,7 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
         type: :object,
         properties: {
           date: { type: :string },
-          city: { type: :string },
+          city: { type: :string }
         },
         required: %w[date city]
       }
@@ -45,7 +45,7 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
         type: :object,
         properties: {
           date: { type: :string },
-          city: { type: :string },
+          city: { type: :string }
         },
         required: %w[date city]
       }
