@@ -44,9 +44,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   # Only allow a list of trusted parameters through.
-  def user_params
-    params.require(:user).permit(:name, :email, :password)
-  end
 
   def login
     user = User.find_by(email: params[:email])
@@ -65,5 +62,11 @@ class Api::V1::UsersController < ApplicationController
     user = User.find(decode(token)['user_id'])
 
     render json: user
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
   end
 end
