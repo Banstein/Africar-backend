@@ -115,6 +115,15 @@ To get a local copy up and running follow these simple example steps.
     rails s 
     ```
 
+### Testing
+
+    ```sh
+    rails rswag 
+    ```
+    ```sh
+    rspec spec/requests
+    ```
+
 <hr>
 
 ## Authors

@@ -1,6 +1,6 @@
 class Car < ApplicationRecord
-  has_many :users, through: :reservations, dependent: :destroy
   has_many :reservation, dependent: :destroy
+  has_many :users, through: :reservations, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :description, presence: true, length: { minimum: 3, maximum: 500 }

@@ -44,13 +44,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   # Only allow a list of trusted parameters through.
-  def user_params
-    params.require(:user).permit(:name, :email, :password)
-  end
-
+  
   def login
     user = User.find_by(email: params[:email])
-
+    
     if user&.authenticate(params[:password])
       payload = { user_id: user.id }
       token = encode(payload)
@@ -59,11 +56,17 @@ class Api::V1::UsersController < ApplicationController
       render json: { error: 'User not found' }
     end
   end
-
+  
   def token_authenticate
     token = request.headers['Authenticate']
     user = User.find(decode(token)['user_id'])
-
+    
     render json: user
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
   end
 end
